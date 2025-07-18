@@ -6,7 +6,8 @@ public class Permutation {
 	private final String word;
 
 	public Permutation(String word) {
-		this.word = word;
+
+		this.word = word.toUpperCase();
 	}
 
 	@Override

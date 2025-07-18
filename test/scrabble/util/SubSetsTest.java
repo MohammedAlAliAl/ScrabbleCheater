@@ -1,6 +1,5 @@
 package scrabble.util;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -11,7 +10,6 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 public class SubSetsTest {
 
 	public static Collection<Object[]> data() {
@@ -20,32 +18,19 @@ public class SubSetsTest {
 				{ "ab", new String[] { "ab" } },
 				{
 						"java",
-						new String[] { "aajv", "ajv", "aaj", "aav", "aa", "aj",
-								"av", "jv" } },
+						new String[] { "aj", "av", "jv", "ajv", "aajv", "aaj", "aav", "aa" }
+				},
 				{
 						"abcd",
-						new String[] { "ab", "ac", "ad", "bc", "bd", "cd",
-								"abc", "abd","bcd","acd","abcd" } } });
+						new String[] { "ab", "ac", "ad", "bc", "bd", "cd", "abc", "abd", "acd", "bcd", "abcd" }
+				}
+		});
 	}
 
-	String str;
-	Set<String> expected;
-
-	public SubSetsTest(String str, String[] list) {
-		this.str = str;
-		this.expected = new HashSet<String>(Arrays.asList(list));
-	}
-
-	//@Ignore
-	public void testComputeSubSets(String str, String[] list) {
-		Set<String> actual = SubSets.getSubSets(str);
-		assertEquals(expected, actual);
-	}
 	@ParameterizedTest
 	@MethodSource("data")
-	public void testNothing(String str, String[] list) {
-		// just to avoid to get the No runnable methods error, can be deleted
-		// if the @Ignore above is changed to @Test
+	public void testComputeSubSets(String input, String[] expectedArray) {
+		Set<String> expected = new HashSet<>(Arrays.asList(expectedArray));
+		Set<String> actual = SubSets.getSubSets(input);assertEquals(expected, actual);
 	}
-
 }

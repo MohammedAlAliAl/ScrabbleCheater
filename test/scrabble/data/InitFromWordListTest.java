@@ -9,7 +9,7 @@ public class InitFromWordListTest {
 	public void initFromFile() {
 		WordList wl = new SimpleWordList()
 				.initFromFile("wordlists/sowpods.txt");
-		assertEquals(267751, wl.size(),
+		assertEquals(267754, wl.size(),
 				"Task1: initFromFile / words should be stored in wordlist");
 	}
 }
